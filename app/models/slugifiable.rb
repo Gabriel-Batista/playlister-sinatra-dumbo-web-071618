@@ -1,3 +1,4 @@
+#TODO: This shit is broken yo :(
 module Slugifiable
     module InstanceMethods
         def slug
@@ -10,6 +11,7 @@ module Slugifiable
             end
             result.strip!
             result.gsub!(/\s+/, '-')
+            result.downcase
         end
     end
 
