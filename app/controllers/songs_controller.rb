@@ -5,8 +5,8 @@ class SongController < ApplicationController
     erb :'song/new'
   end
 
-  get '/songs/:id' do
-    @song = Song.find(params[:id])
+  get '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug])
     @genres = @song.genres
     erb :'song/show'
   end
@@ -20,6 +20,6 @@ class SongController < ApplicationController
     new_song.genres << genre
 
     new_song.save
-    redirect to "/songs/#{new_song.id}"
+    redirect to "/songs/#{new_song.slug}"
   end
 end
